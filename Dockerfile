@@ -1,4 +1,4 @@
-FROM golang:1.17.5 AS builder
+FROM golang:1.24.1 AS builder
 
 #ENV GOPROXY https://goproxy.cn,direct
 
@@ -12,9 +12,6 @@ RUN go mod tidy
 RUN CGO_ENABLED=0 go build -o filebeat
 
 FROM alpine
-
-LABEL author=github.com/wolanx
-ENV TZ utc-8
 
 WORKDIR /usr/share/filebeat
 
